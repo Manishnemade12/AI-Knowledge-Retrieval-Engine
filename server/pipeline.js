@@ -20,6 +20,17 @@ export function getDocuments() {
   }));
 }
 
+export function deleteDocument(documentId) {
+  const documentIndex = documents.findIndex((document) => document.documentId === documentId);
+
+  if (documentIndex === -1) {
+    return false;
+  }
+
+  documents.splice(documentIndex, 1);
+  return true;
+}
+
 export async function ingestPdfDocument({ buffer, filename }) {
   const documentId = `${Date.now()}-${sanitizeName(filename)}`;
   const baseDocument = {

@@ -8,6 +8,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import {
   answerQuestion,
+  deleteDocument,
   getDocuments,
   ingestPdfDocument
 } from './pipeline.js';
@@ -33,6 +34,16 @@ app.get('/api/health', (_request, response) => {
 
 app.get('/api/documents', (_request, response) => {
   response.json({ documents: getDocuments() });
+});
+
+app.delete('/api/documents/:documentId', (request, response) => {
+  const deleted = deleteDocument(request.params.documentId);
+
+  if (!deleted) {
+    return response.status(404).json({ error: 'Document not found.' });
+  }
+
+  return response.status(204).send();
 });
 
 app.post('/api/documents', upload.single('file'), async (request, response) => {
