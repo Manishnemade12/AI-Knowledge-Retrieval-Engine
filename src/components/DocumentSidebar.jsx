@@ -18,7 +18,7 @@ export default function DocumentSidebar({
   );
 
   return (
-    <aside className="flex min-h-0 w-full flex-col border-b border-[#30362d] bg-[#1c211b] lg:w-[292px] lg:border-b-0 lg:border-r">
+    <aside className="flex min-h-0 w-full shrink-0 flex-col border-b border-[#30362d] bg-[#1c211b] md:h-screen md:w-[270px] md:border-b-0 md:border-r xl:w-[292px]">
       <div className="flex items-center justify-between px-5 py-5">
         <BrandMark />
         <button className="icon-button" title="Workspace settings" type="button"><SlidersHorizontal size={17} /></button>
@@ -41,7 +41,7 @@ export default function DocumentSidebar({
         </form>
       </div>
 
-      <div className="mt-6 flex min-h-0 flex-1 flex-col px-4 pb-4">
+      <div className="mt-6 flex min-h-0 flex-1 flex-col px-4 pb-4 md:overflow-hidden">
         <div className="mb-3 flex items-center justify-between px-1">
           <p className="section-label">Library</p>
           <span className="text-xs text-[#747c70]">{documents.length}</span>
@@ -74,7 +74,7 @@ export default function DocumentSidebar({
         </div>
       </div>
 
-      <div className="border-t border-[#30362d] p-4">
+      <div className="hidden border-t border-[#30362d] p-4 md:block">
         <div className="flex items-start gap-3 rounded-xl bg-[#252c22] p-3">
           <Sparkles className="mt-0.5 shrink-0 text-[#d8f75b]" size={16} />
           <div>

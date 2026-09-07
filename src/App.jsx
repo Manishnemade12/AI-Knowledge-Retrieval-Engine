@@ -76,9 +76,11 @@ export default function App() {
 
   async function handleCopy() { await navigator.clipboard?.writeText(answer); setStatusMessage('Answer copied to clipboard.'); }
 
-  return <main className="flex min-h-screen flex-col bg-[#1c211b] lg:flex-row">
+  return <main className="flex min-h-screen flex-col bg-[#1c211b] md:flex-row xl:h-screen xl:overflow-hidden">
     <DocumentSidebar documents={documents} selectedDocumentId={selectedDocumentId} uploadFile={uploadFile} loadingUpload={loadingUpload} onFileChange={(event) => setUploadFile(event.target.files?.[0] || null)} onUpload={handleUpload} onSelect={setSelectedDocumentId} onDelete={handleDelete} onSearchChange={setSearchTerm} searchTerm={searchTerm} />
-    <ChatWorkspace selectedDocument={selectedDocument} question={question} answer={answer} loadingAnswer={loadingAnswer} confidence={confidence} statusMessage={statusMessage} onQuestionChange={setQuestion} onAsk={handleAskQuestion} onSuggestion={setQuestion} onCopy={handleCopy} />
-    <EvidencePanel citations={citations} sources={sources} confidence={confidence} stats={stats} />
+    <div className="flex min-w-0 flex-1 flex-col xl:min-h-0 xl:flex-row">
+      <ChatWorkspace selectedDocument={selectedDocument} question={question} answer={answer} loadingAnswer={loadingAnswer} confidence={confidence} statusMessage={statusMessage} onQuestionChange={setQuestion} onAsk={handleAskQuestion} onSuggestion={setQuestion} onCopy={handleCopy} />
+      <EvidencePanel citations={citations} sources={sources} confidence={confidence} stats={stats} />
+    </div>
   </main>;
 }

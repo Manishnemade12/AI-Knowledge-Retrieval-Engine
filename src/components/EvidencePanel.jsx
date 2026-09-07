@@ -2,7 +2,7 @@ import { BarChart3, ChevronRight, FileSearch, Layers3 } from 'lucide-react';
 
 export default function EvidencePanel({ citations, sources, confidence, stats }) {
   return (
-    <aside className="w-full border-t border-[#30362d] bg-[#20261e] text-[#eef2e6] lg:w-[330px] lg:border-l lg:border-t-0">
+    <aside className="w-full shrink-0 border-t border-[#30362d] bg-[#20261e] text-[#eef2e6] xl:w-[330px] xl:overflow-y-auto xl:border-l xl:border-t-0">
       <div className="flex items-center justify-between border-b border-[#30362d] px-5 py-5">
         <div><p className="section-label text-[#89917f]">Answer context</p><h2 className="mt-1 font-display text-lg font-semibold">Evidence</h2></div>
         <FileSearch className="text-[#d8f75b]" size={19} />

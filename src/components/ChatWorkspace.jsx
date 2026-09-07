@@ -21,7 +21,7 @@ export default function ChatWorkspace({
   const hasDocument = Boolean(selectedDocument);
 
   return (
-    <section className="flex min-h-[620px] min-w-0 flex-1 flex-col bg-[#f5f6f0]">
+    <section className="flex min-h-[calc(100vh-250px)] min-w-0 flex-1 flex-col bg-[#f5f6f0] md:min-h-screen xl:min-h-0 xl:overflow-y-auto">
       <header className="flex items-center justify-between border-b border-[#dfe3d8] px-6 py-4 lg:px-9">
         <div className="flex min-w-0 items-center gap-3">
           <div className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#e4ebd2] text-[#53653b]"><BookOpen size={17} /></div>
