@@ -1,8 +1,8 @@
-# AI Study Assistant (RAG-Based PDF Q&A)
+# AI Study Assistant — AI Knowledge Retrieval Engine (RAG-Based PDF Q&A)
 
 ## Overview
 
-AI Study Assistant is a Retrieval-Augmented Generation (RAG)-based application that allows users to upload PDF documents and ask natural language questions based on document content.
+AI Study Assistant — AI Knowledge Retrieval Engine is a Retrieval-Augmented Generation (RAG)-based application that allows users to upload PDF documents and ask natural language questions based on document content.
 
 Unlike traditional chatbots that rely on general knowledge, this system generates answers strictly from the uploaded document context using semantic retrieval and LLM-powered response generation.
 
@@ -492,7 +492,7 @@ Key concepts showcased:
 
 # Summary
 
-AI Study Assistant is not a traditional chatbot.
+AI Study Assistant — AI Knowledge Retrieval Engine is not a traditional chatbot.
 
 It is a document intelligence system that:
 

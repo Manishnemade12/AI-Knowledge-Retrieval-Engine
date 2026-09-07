@@ -29,7 +29,7 @@ app.use(express.json({ limit: '2mb' }));
 app.use(morgan('dev'));
 
 app.get('/api/health', (_request, response) => {
-  response.json({ ok: true, service: 'ai-study-assistant' });
+  response.json({ ok: true, service: 'ai-knowledge-retrieval-engine' });
 });
 
 app.get('/api/documents', (_request, response) => {
@@ -104,5 +104,5 @@ if (process.env.NODE_ENV === 'production' && fs.existsSync(distDir)) {
 }
 
 app.listen(port, () => {
-  console.log(`AI Study Assistant server running on http://localhost:${port}`);
+  console.log(`AI Study Assistant — AI Knowledge Retrieval Engine running on http://localhost:${port}`);
 });

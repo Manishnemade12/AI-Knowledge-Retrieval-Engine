@@ -1,6 +1,6 @@
-# AI Study Assistant (RAG Pipeline)
+# AI Study Assistant — AI Knowledge Retrieval Engine
 
-AI Study Assistant is a JavaScript-based RAG demo for PDF question answering. It accepts PDF uploads, extracts and chunks the text, builds local embeddings for semantic retrieval, and sends the best matches to Grok for grounded answer generation.
+AI Study Assistant — AI Knowledge Retrieval Engine is a JavaScript-based RAG application for PDF question answering. It accepts PDF uploads, extracts and chunks the text, builds local embeddings for semantic retrieval, and sends the best matches to Grok for grounded answer generation.
 
 ## What is included
 

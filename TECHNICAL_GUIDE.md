@@ -1,8 +1,8 @@
-# AI Study Assistant - Technical Guide
+# AI Study Assistant — AI Knowledge Retrieval Engine - Technical Guide
 
 ## 1. Project Summary
 
-AI Study Assistant is a JavaScript-based PDF question answering system built with a Retrieval-Augmented Generation (RAG) pipeline.
+AI Study Assistant — AI Knowledge Retrieval Engine is a JavaScript-based PDF question answering system built with a Retrieval-Augmented Generation (RAG) pipeline.
 
 Users can:
 
@@ -360,7 +360,7 @@ If asked to explain the project, say:
 
 ## 14. Best Short Explanation for Interviews
 
-AI Study Assistant is a JavaScript RAG application that turns PDFs into searchable chunks, retrieves the most relevant context for a question, and uses Grok to generate grounded answers.
+AI Study Assistant — AI Knowledge Retrieval Engine is a JavaScript RAG application that turns PDFs into searchable chunks, retrieves the most relevant context for a question, and uses Grok to generate grounded answers.
 
 ## 15. Practical Weak Spots to Mention Honestly
 

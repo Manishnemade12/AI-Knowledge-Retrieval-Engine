@@ -40,14 +40,14 @@ export default function ChatWorkspace({
           <div className="mx-auto mb-8 max-w-xl text-center">
             <div className="mx-auto mb-5 grid size-14 place-items-center rounded-2xl bg-[#e5ebd8] text-[#637b3d]"><Sparkles size={24} /></div>
             <h2 className="font-display text-3xl font-semibold tracking-tight text-[#20251e]">Make your reading time count.</h2>
-            <p className="mt-3 text-sm leading-6 text-[#778071]">Upload a study document and ask anything. Lumen will find the evidence first, then explain it clearly.</p>
+            <p className="mt-3 text-sm leading-6 text-[#778071]">Upload a study document and ask anything. AI Study Assistant will find the evidence first, then explain it clearly.</p>
           </div>
         ) : (
           <div className="mx-auto mb-8 w-full max-w-3xl space-y-6">
             <div className="flex gap-3">
               <div className="grid size-8 shrink-0 place-items-center rounded-xl bg-[#dce8bd] text-[#526737]"><Bot size={16} /></div>
               <div className="min-w-0 flex-1">
-                <div className="mb-2 flex items-center justify-between gap-3"><p className="text-xs font-semibold uppercase tracking-[0.13em] text-[#89917f]">Lumen · grounded answer</p><span className="text-xs text-[#89917f]">{Math.round(confidence * 100)}% match</span></div>
+                <div className="mb-2 flex items-center justify-between gap-3"><p className="text-xs font-semibold uppercase tracking-[0.13em] text-[#89917f]">AI Study Assistant · grounded answer</p><span className="text-xs text-[#89917f]">{Math.round(confidence * 100)}% match</span></div>
                 <div className="rounded-2xl rounded-tl-sm border border-[#dfe3d8] bg-white p-5 text-[15px] leading-7 text-[#343b31] shadow-[0_8px_24px_rgba(54,65,42,0.05)]">{answer}</div>
                 <div className="mt-2 flex items-center gap-1">
                   <button className="subtle-button" type="button" onClick={onCopy}><Clipboard size={13} /> Copy</button>
@@ -68,7 +68,7 @@ export default function ChatWorkspace({
               {loadingAnswer ? <LoaderCircle className="animate-spin" size={17} /> : <Send size={17} />}
             </button>
           </form>
-          <p className="mt-3 text-center text-[11px] text-[#9aa193]">Lumen can make mistakes. Check the evidence panel for the original context.</p>
+          <p className="mt-3 text-center text-[11px] text-[#9aa193]">AI Study Assistant can make mistakes. Check the evidence panel for the original context.</p>
         </div>
       </div>
     </section>
