@@ -80,6 +80,10 @@ app.post('/api/chat', async (request, response) => {
       return response.status(400).json({ error: 'A question is required.' });
     }
 
+    if (question.trim().length > 2000) {
+      return response.status(400).json({ error: 'Questions must be 2000 characters or fewer.' });
+    }
+
     const result = await answerQuestion({
       question,
       documentId: typeof documentId === 'string' ? documentId : undefined

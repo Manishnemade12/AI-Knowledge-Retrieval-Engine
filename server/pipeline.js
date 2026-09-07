@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import pdf from 'pdf-parse';
 import {
@@ -9,9 +10,12 @@ import {
 } from './vector.js';
 import { generateGrokAnswer } from './grokClient.js';
 
-const documents = [];
+const storageDirectory = path.join(process.cwd(), 'server', 'data');
+const storagePath = path.join(storageDirectory, 'documents.json');
+const documents = loadDocumentsFromDisk();
 const maxChunkWords = Number(process.env.MAX_CHUNK_WORDS || 800);
 const chunkOverlapWords = Number(process.env.CHUNK_OVERLAP_WORDS || 150);
+const minimumSimilarity = Number(process.env.MINIMUM_SIMILARITY || 0.08);
 
 export function getDocuments() {
   return documents.map(({ chunks, ...document }) => ({
@@ -28,6 +32,7 @@ export function deleteDocument(documentId) {
   }
 
   documents.splice(documentIndex, 1);
+  saveDocumentsToDisk();
   return true;
 }
 
@@ -56,6 +61,7 @@ export async function ingestPdfDocument({ buffer, filename }) {
     };
 
     documents.unshift(document);
+    saveDocumentsToDisk();
 
     return {
       documentId: document.documentId,
@@ -81,6 +87,7 @@ export async function ingestPdfDocument({ buffer, filename }) {
     };
 
     documents.unshift(document);
+    saveDocumentsToDisk();
 
     return {
       documentId: document.documentId,
@@ -111,6 +118,7 @@ export async function ingestPdfDocument({ buffer, filename }) {
   };
 
   documents.unshift(document);
+  saveDocumentsToDisk();
 
   return {
     documentId: document.documentId,
@@ -150,6 +158,15 @@ export async function answerQuestion({ question, documentId }) {
   );
 
   const matches = topMatches(candidates, 5);
+
+  if (!matches.length || matches[0].similarity < minimumSimilarity) {
+    return {
+      answer: 'Information not found in the uploaded document.',
+      citations: [],
+      confidence: Math.max(0, Number(matches[0]?.similarity?.toFixed(3) || 0)),
+      sources: []
+    };
+  }
 
   if (!matches.length) {
     return {
@@ -194,4 +211,18 @@ function sanitizeName(filename = 'document') {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '') || 'document';
+}
+
+function loadDocumentsFromDisk() {
+  try {
+    const storedDocuments = JSON.parse(fs.readFileSync(storagePath, 'utf8'));
+    return Array.isArray(storedDocuments) ? storedDocuments : [];
+  } catch (_error) {
+    return [];
+  }
+}
+
+function saveDocumentsToDisk() {
+  fs.mkdirSync(storageDirectory, { recursive: true });
+  fs.writeFileSync(storagePath, JSON.stringify(documents), 'utf8');
 }
